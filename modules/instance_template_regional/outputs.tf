@@ -14,11 +14,6 @@
  * limitations under the License.
  */
 
-output "self_link_unique" {
-  description = "Unique self-link of regional instance template (recommended output to use instead of self_link)"
-  value       = google_compute_region_instance_template.tpl.self_link_unique
-}
-
 output "self_link" {
   description = "Self-link of regional instance template"
   value       = google_compute_region_instance_template.tpl.self_link
