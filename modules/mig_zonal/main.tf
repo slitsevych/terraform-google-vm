@@ -85,7 +85,13 @@ resource "google_compute_instance_group_manager" "mig" {
     content {
       initial_delay_sec = lookup(standby_policy.value, "initial_delay_sec", 0)
       mode              = lookup(standby_policy.value, "mode", "MANUAL")
+    }
 
+  dynamic "instance_lifecycle_policy " {
+    for_each = var.instance_lifecycle_policy 
+    content {
+      force_update_on_repair    = lookup(instance_lifecycle_policy.value, "force_update_on_repair", "YES")
+      default_action_on_failure = lookup(instance_lifecycle_policy.value, "default_action_on_failure", "REPAIR")
     }
   }
 

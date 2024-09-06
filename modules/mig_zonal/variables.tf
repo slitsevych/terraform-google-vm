@@ -103,6 +103,15 @@ variable "standby_policy" {
   default = []
 }
 
+variable "instance_lifecycle_policy" {
+  description = "The instance_lifecycle_policy"
+  type = list(object({
+    force_update_on_repair    = optional(string)
+    default_action_on_failure = optional(string)
+  }))
+  default = []
+}
+
 ##############
 # Healthcheck
 ##############
