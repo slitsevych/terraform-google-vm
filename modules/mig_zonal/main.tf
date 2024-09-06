@@ -86,6 +86,7 @@ resource "google_compute_instance_group_manager" "mig" {
       initial_delay_sec = lookup(standby_policy.value, "initial_delay_sec", 0)
       mode              = lookup(standby_policy.value, "mode", "MANUAL")
     }
+  }
 
   dynamic "instance_lifecycle_policy " {
     for_each = var.instance_lifecycle_policy 
