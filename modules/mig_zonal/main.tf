@@ -88,7 +88,7 @@ resource "google_compute_instance_group_manager" "mig" {
     }
   }
 
-  dynamic "instance_lifecycle_policy " {
+  dynamic "instance_lifecycle_policy" {
     for_each = var.instance_lifecycle_policy 
     content {
       force_update_on_repair    = lookup(instance_lifecycle_policy.value, "force_update_on_repair", "YES")
